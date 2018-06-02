@@ -23,7 +23,7 @@ namespace Actividad.Controllers
 
         //metodo para devolver la vista con datos inyectados
        
-        public ViewResult  ListaUsuarios()
+        public ViewResult  ListaUsuarios(string CodigoUsuario)
         {
             //objetos para mostrar  usuarios
 
@@ -34,7 +34,15 @@ namespace Actividad.Controllers
 
             listausuariosViewModel.Titulo = "Listado  de Usuarios";
             listausuariosViewModel.subtitulo = "Vista donde se muestran los usuarios con sus respectivos niveles";
-                     
+
+            ViewData["filtro1"] = CodigoUsuario;
+            if (!string.IsNullOrEmpty(CodigoUsuario))
+            {
+                listausuariosViewModel.Usuarios = _usuariosRepositorios.UsuariosPorCodigo(Convert.ToInt32(CodigoUsuario));
+
+
+            }
+          
             return View(listausuariosViewModel);
         }//fin del metodo ListaUsuarios
       

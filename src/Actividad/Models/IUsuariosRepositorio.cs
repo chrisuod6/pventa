@@ -8,6 +8,6 @@ namespace Actividad.Models
     public interface IUsuariosRepositorio
     {
         IEnumerable<Usuarios> Usuarios { get; }
-       
+        IEnumerable<Usuarios> UsuariosPorCodigo(int CodigoUsuario);
     }
 }

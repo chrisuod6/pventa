@@ -17,9 +17,15 @@ namespace Actividad.Models
         //metodos disponibles de la clase interface
 
         public IEnumerable<Usuarios> Usuarios => _appDbContext.Usuarios;
+
+        public IEnumerable <Usuarios>  UsuariosPorCodigo  (int CodigoUsuario)
+        {
+             yield return _appDbContext.Usuarios.FirstOrDefault(u => u.CodigoUsuario == CodigoUsuario);
+        }
        
         
     }
+
    
 
 }

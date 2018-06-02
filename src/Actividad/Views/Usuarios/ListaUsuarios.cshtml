@@ -30,25 +30,24 @@
              <tr class="alert-success text-center text-dark">              
                     <th >Codigo</th>
                      <th >Nombre y apellido</th>
-                   
                     <th>Cuenta</th>
+                    <th>Nivel de Usuario</th>
                    
             </tr> 
         </thead>
 
-    @foreach (var usuarios in Model.Usuarios)
-    {
-            <tr class="border-info">
-                <td >@usuarios.CodigoUsuario</td>
-                <td >@usuarios.NombreUsuario @usuarios.ApellidoUsuario </td>
-               
-                <td>@usuarios.CuentaUsuario</td>
-             
-            </tr>
+    @foreach (var usuarios in Model.Usuarios) 
+
+    {   
+             <tr class="border-info">
+
+            <td>@usuarios.CodigoUsuario</td>
+            <td>@usuarios.NombreUsuario @usuarios.ApellidoUsuario </td>
+            <td>@usuarios.CuentaUsuario</td>
+                   </tr>
+            }
+
+</table></div></div> <br/>
 
 
-        }
-       </table></div></div> <br/>
-
-        
     

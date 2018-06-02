@@ -12,6 +12,7 @@ namespace Actividad.Viewmodels
 
         public string Titulo { get; set; }
         public string subtitulo { get; set; }
+        
 
     }
 }

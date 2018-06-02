@@ -1,53 +1,17 @@
-﻿
-@model UsuariosViewModel
+﻿@model UsuariosViewModel
 <title>Lista Usuarios</title>
+<div class="container text-center" style="background:rgba(128, 128, 128, 0.55)">
+    <br />
+    <h1>@Model.Titulo </h1>
+    <br />
+    <h3>@Model.subtitulo</h3>
+    <br />
+    <br />
+</div>
+<br />
+<br />
+ @Html.Partial("DesplegarUsuarios")
 
-      
-   <div class="container text-center"  style="background:rgba(128, 128, 128, 0.55)" >
-     
-       <br />
-        <h1>@Model.Titulo</h1>
-       <br />
-       <h3>@Model.subtitulo</h3>
-       <br />
-       <br />
- </div>
-        <br />
-        <br />
-    <div class="container ">
-    <div class="table-responsive">
-        <style>
-            #thead{
-                
-                border-bottom:solid 5px #0F362D;          
-
-            }
-        </style>
-    
-         <table class="table table-striped table-bordered table-hover text-center border-info " >
-       
-            <thead id="thead">
-             <tr class="alert-success text-center text-dark">              
-                    <th >Codigo</th>
-                     <th >Nombre y apellidossss</th>
-                    <th>Cuenta</th>
-                    <th>Nivel de Usuario</th>
-                   
-            </tr> 
-        </thead>
-
-    @foreach (var usuarios in Model.Usuarios) 
-
-    {   
-             <tr class="border-info">
-
-            <td>@usuarios.CodigoUsuario</td>
-            <td>@usuarios.NombreUsuario @usuarios.ApellidoUsuario </td>
-            <td>@usuarios.CuentaUsuario</td>
-                   </tr>
-            }
-
-</table></div></div> <br/>
 
 
     

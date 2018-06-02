@@ -14,38 +14,4 @@
 <br />
 <br />
 
-<div class="container">
-    <div class="table-responsive">
-        <style>
-   
-            #thead{
-
-                border-bottom:solid 5px #0F362D;
-            }
-            </style>
-        <table  class="table table-striped table-bordered table-hover text-center ">
-        <thead id="thead">
-         <tr class="alert-success text-center text-dark" >
-
-                <th width="50px">Codigo</th>
-                <th width="200px">Nivel</th>
-                <th width="300px">Descripcion</th>
-            </tr>
-            </thead>
-                @foreach (var NivelUsuarios in Model.NivelUsuarios)
-                {
-                   <tr >
-                       <td>@NivelUsuarios.CodigoNivel</td>
-                       <td>@NivelUsuarios.NombreNivel</td>
-                       <td>@NivelUsuarios.DescripcionNivel</td>
-                   </tr>
-
-                }
-</table>
-    </div>
-</div>
-<<br />
-<br />
-<br />
-<br />
-
+@Html.Partial("DesplegarNiveles")

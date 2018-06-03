@@ -1,33 +1,11 @@
 ﻿<div class="container">
     <div class="row justify-content-center">
         <div class="col-auto">
-            <form asp-action="ListaUsuarios" method="get" class="form-inline">
+            <form asp-action="ListaUsuarios"  method="get" class="form-inline">
                 <p>
                     <input type="text" name="CodigoUsuario" value="@ViewData["filtro1"]" class="form-control is-valid " placeholder="Codigo de usuario..." />
                     <button type="submit" class="btn btn-outline-success"><i class="fa fa-search "></i></button>
                 </p>
-            </form>
-        </div>
-
-        <div class="col-auto">
-            <form asp-action="ListaUsuarios" method="get" class="form-inline">
-
-                <p>
-                    <div class="input-group">
-                        <select class="custom-select" name="nivel">
-                            <option selected>Niveles...</option>
-                            <option value="0">Todos los usuarios</option>
-                            <option value="1">Administradores</option>
-                            <option value="2">Editores</option>
-                            <option value="3">Consultores</option>
-
-                        </select>
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-outline-primary"><i class="fa fa-list "></i></button>
-                        </div>
-                    </div>
-                </p>
-
             </form>
         </div>
 

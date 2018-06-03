@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,12 +19,12 @@ namespace Actividad.Models
 
         public IEnumerable<Usuarios> Usuarios => _appDbContext.Usuarios;
 
-        public IEnumerable <Usuarios>  UsuariosPorCodigo  (int CodigoUsuario)
+        IEnumerable<Usuarios> IUsuariosRepositorio.UsuariosPorCodigo(int CodigoUsuario)
         {
-             yield return _appDbContext.Usuarios.FirstOrDefault(u => u.CodigoUsuario == CodigoUsuario);
+            yield return _appDbContext.Usuarios.FirstOrDefault(u => u.CodigoUsuario == CodigoUsuario);
         }
-       
-        
+
+
     }
 
    

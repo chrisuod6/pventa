@@ -11,27 +11,26 @@ namespace Actividad.Controllers
     public class UsuariosController : Controller
     {
         //objetos de solo lectura que sera instancia de las clases repositorios
-       
+
         private readonly IUsuariosRepositorio _usuariosRepositorios;
+        private readonly INivelUsuariosRepositorio _nivelusuariosRepositorio;
+
 
         //constructor de esta clase controller
-        public UsuariosController( IUsuariosRepositorio usuariosRepositorios)
+        public UsuariosController(IUsuariosRepositorio usuariosRepositorios, INivelUsuariosRepositorio nivelusuariosrepositorios)
         {
-        
+            _nivelusuariosRepositorio = nivelusuariosrepositorios;
             _usuariosRepositorios = usuariosRepositorios;
         }//Fin del constructor
 
         //metodo para devolver la vista con datos inyectados
-       
-        public ViewResult  ListaUsuarios(string CodigoUsuario)
+
+        public ViewResult ListaUsuarios(string CodigoUsuario)
         {
             //objetos para mostrar  usuarios
 
             UsuariosViewModel listausuariosViewModel = new UsuariosViewModel();
             listausuariosViewModel.Usuarios = _usuariosRepositorios.Usuarios;
-
-            //Pasando un valor a la variable de la clase
-
             listausuariosViewModel.Titulo = "Listado  de Usuarios";
             listausuariosViewModel.subtitulo = "Vista donde se muestran los usuarios con sus respectivos niveles";
 
@@ -42,10 +41,10 @@ namespace Actividad.Controllers
 
 
             }
-          
-            return View(listausuariosViewModel);
+
+           return View(listausuariosViewModel);
         }//fin del metodo ListaUsuarios
-      
-      
+
+
     }
 }

@@ -1,0 +1,15 @@
+﻿@model SolicitadosViewModel
+
+@if (Model.Solicitados.SolicitadosItems.Count >= 0)
+{
+    <li >
+        <a  class="nav-link" asp-controller="Solicitados">
+            <i class="fa fa-user-circle" style="color:dodgerblue"></i>
+
+            <span style="color:dodgerblue">
+                @Model.Solicitados.SolicitadosItems.Count
+            </span>
+        </a>
+    </li>
+
+}

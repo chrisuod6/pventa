@@ -13,6 +13,7 @@
                     <th>Codigo</th>
                     <th>Nombre y apellidos</th>
                     <th>Cuenta</th>
+                    <th colspan="2">Nivel</th>
                 </tr>
             </thead>
       @foreach (var usuarios in Model.Usuarios)
@@ -23,6 +24,9 @@
                     <td>@usuarios.CodigoUsuario</td>
                     <td>@usuarios.NombreUsuario @usuarios.ApellidoUsuario </td>
                     <td>@usuarios.CuentaUsuario</td>
+                    <td>@usuarios.NivelUsuarios.NombreNivel</td>
+                    <td><a  class="btn btn-success btn-sm" asp-controller="Solicitados" asp-action="AgregarASolicitados"
+                           asp-route-codigoUsuario="@usuarios.CodigoUsuario">Solicitar</a></td>
                  
                 </tr>
             }

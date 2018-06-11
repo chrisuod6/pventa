@@ -8,8 +8,8 @@ using Actividad.Models;
 namespace Actividad.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180530185451_DataInicio")]
-    partial class DataInicio
+    [Migration("20180611170109_final")]
+    partial class final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,24 @@ namespace Actividad.Migrations
                     b.HasKey("CodigoNivel");
 
                     b.ToTable("NivelesUsuarios");
+                });
+
+            modelBuilder.Entity("Actividad.Models.SolicitadosItems", b =>
+                {
+                    b.Property<int>("Correlativo")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("SesionSolicitado");
+
+                    b.Property<int?>("UsuariosCodigoUsuario");
+
+                    b.Property<int>("cantidadUsuarioSolicitado");
+
+                    b.HasKey("Correlativo");
+
+                    b.HasIndex("UsuariosCodigoUsuario");
+
+                    b.ToTable("SolicitadosItems");
                 });
 
             modelBuilder.Entity("Actividad.Models.Usuarios", b =>
@@ -51,6 +69,13 @@ namespace Actividad.Migrations
                     b.HasIndex("NivelUsuariosCodigoNivel");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Actividad.Models.SolicitadosItems", b =>
+                {
+                    b.HasOne("Actividad.Models.Usuarios", "Usuarios")
+                        .WithMany()
+                        .HasForeignKey("UsuariosCodigoUsuario");
                 });
 
             modelBuilder.Entity("Actividad.Models.Usuarios", b =>

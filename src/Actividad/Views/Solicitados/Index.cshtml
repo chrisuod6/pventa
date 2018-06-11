@@ -1,0 +1,51 @@
+﻿@model SolicitadosViewModel
+<title>Solicitud de Usuarios</title>
+<div class="container text-center" style="background:rgba(128, 128, 128, 0.55)">
+    <br />
+    <h1>Solicitud de usuarios para asignación de tareas</h1>
+    <br />
+</div>
+<br />
+<br />
+
+
+<div class="container ">
+    <div class="table-responsive">
+        <style>
+            #thead {
+                border-bottom: solid 5px #0F362D;
+            }
+        </style>
+
+        <table class="table table-striped table-bordered table-hover text-center border-info ">
+
+            <thead id="thead">
+                <tr class="alert-info text-center text-dark">
+                    <th>Codigo</th>
+                    <th>Nombre y apellidos</th>
+                    <th colspan="2" class="text-left">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var linea in Model.Solicitados.SolicitadosItems)
+                {
+                    <tr class="border-info">
+
+                        <td>@linea.Usuarios.CodigoUsuario</td>
+                        <td>@linea.Usuarios.NombreUsuario @linea.Usuarios.ApellidoUsuario </td>
+                        <td>@linea.cantidadUsuarioSolicitado</td>
+                        <td><a class="fa fa-user-times" asp-controller="Solicitados" asp-action="EliminarDeSolicitados" asp-route-codigoUsuario="@linea.Usuarios.CodigoUsuario"></a></td>
+
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td>@Model.SolicitadosTotal</td>
+                </tr>
+            </tfoot>
+            </table>
+        </div>
+    </div>

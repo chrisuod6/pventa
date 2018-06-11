@@ -13,6 +13,7 @@ namespace Actividad.Models
         }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<NivelUsuarios> NivelesUsuarios { get; set; }
+        public DbSet<SolicitadosItems> SolicitadosItems { get; set; }
 
     }
 }

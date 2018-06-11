@@ -25,24 +25,28 @@ namespace Actividad.Controllers
 
         //metodo para devolver la vista con datos inyectados
 
-        public ViewResult ListaUsuarios(string CodigoUsuario)
+        public ViewResult ListaUsuarios(string nivusu)
         {
-            //objetos para mostrar  usuarios
-
-            UsuariosViewModel listausuariosViewModel = new UsuariosViewModel();
-            listausuariosViewModel.Usuarios = _usuariosRepositorios.Usuarios;
-            listausuariosViewModel.Titulo = "Listado  de Usuarios";
-            listausuariosViewModel.subtitulo = "Vista donde se muestran los usuarios con sus respectivos niveles";
-
-            ViewData["filtro1"] = CodigoUsuario;
-            if (!string.IsNullOrEmpty(CodigoUsuario))
+            IEnumerable<Usuarios> usuarios;
+            string nivelActual = string.Empty;
+            if (string.IsNullOrEmpty(nivusu))
             {
-                listausuariosViewModel.Usuarios = _usuariosRepositorios.UsuariosPorCodigo(Convert.ToInt32(CodigoUsuario));
-
-
+                usuarios = _usuariosRepositorios.Usuarios.OrderBy(u => u.CodigoUsuario);
+                nivelActual = "Todos los usuarios";
             }
+            else
+            {
+                usuarios = _usuariosRepositorios.Usuarios.Where(u => u.NivelUsuarios.NombreNivel == nivusu).OrderBy(u => u.CodigoUsuario);
+                nivelActual = _nivelusuariosRepositorio.NivelUsuarios.FirstOrDefault(n => n.NombreNivel == nivusu).NombreNivel;
+            }
+            return View(new UsuariosViewModel
+            {
+                Usuarios = usuarios,
+                NivelesUsuarios = nivelActual,
+                Titulo= "Usuarios",
+                subtitulo="Lista de usuarios con sus respectivos niveles"
 
-           return View(listausuariosViewModel);
+            });
         }//fin del metodo ListaUsuarios
 
 

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<NivelUsuarios>
+<li class="nav-item dropdown">
+    <a asp-controller="Usuarios"
+       asp-action="ListaUsuarios"
+       class="nav-link dropdown-toggle" data-toggle="dropdown">Niveles usuarios<b class="caret"></b></a>
+    <div class="dropdown-menu">
+        @foreach (var nivusu in Model)
+        {
+            
+                <a class="dropdown-item" asp-controller="Usuarios" asp-action="ListaUsuarios"
+                   asp-route-nivusu="@nivusu.NombreNivel">@nivusu.NombreNivel</a>
+            
+        }
+        <div class="dropdown-divider"></div>
+        
+            <a class="dropdown-item" asp-controller="Usuarios" asp-action="ListaUsuarios" asp-route-nivusu="">Todos los usuarios</a>
+        
+    </div>
+</li>
+

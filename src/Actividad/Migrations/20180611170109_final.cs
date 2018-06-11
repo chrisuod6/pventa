@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Actividad.Migrations
 {
-    public partial class DataInicio : Migration
+    public partial class final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,32 @@ namespace Actividad.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SolicitadosItems",
+                columns: table => new
+                {
+                    Correlativo = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    SesionSolicitado = table.Column<string>(nullable: true),
+                    UsuariosCodigoUsuario = table.Column<int>(nullable: true),
+                    cantidadUsuarioSolicitado = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SolicitadosItems", x => x.Correlativo);
+                    table.ForeignKey(
+                        name: "FK_SolicitadosItems_Usuarios_UsuariosCodigoUsuario",
+                        column: x => x.UsuariosCodigoUsuario,
+                        principalTable: "Usuarios",
+                        principalColumn: "CodigoUsuario",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SolicitadosItems_UsuariosCodigoUsuario",
+                table: "SolicitadosItems",
+                column: "UsuariosCodigoUsuario");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Usuarios_NivelUsuariosCodigoNivel",
                 table: "Usuarios",
@@ -54,6 +80,9 @@ namespace Actividad.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "SolicitadosItems");
+
             migrationBuilder.DropTable(
                 name: "Usuarios");
 
